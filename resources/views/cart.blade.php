@@ -34,7 +34,7 @@
         </div>
         <div style="height:5%"></div>
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Order</button>
+            <button type="submit" class="btn btn-primary bg-dark">Order</button>
         </div>
     </form>
 </div>
