@@ -25,8 +25,8 @@
 <body class="antialiased">
     <div class="container mt-5">
         <h1 class="display-4">Welcome to Pitshop</h1>
-        <p class="lead">We are a one-stop shop for all your car clothing needs. From T-shirts and hats to jackets and
-            racing suits, we have everything you need to show off your love of cars.</p>
+        <p class="lead">We are a one-stop shop for all your car clothing needs. From beanies and hoodies to socks, we
+            have everything you need to show off your love of cars.</p>
         <p>Our team is passionate about cars and we pride ourselves on offering high-quality products at competitive
             prices. We also have a wide selection of products from the top brands in the industry.</p>
         <p>Thank you for choosing Pitshop for your car clothing needs. We look forward to serving you and helping you

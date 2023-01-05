@@ -9,6 +9,22 @@
 </head>
 
 @section('content')
+
+@if(Session::has('message'))
+
+<style>
+</style>
+<!-- In your view -->
+<div class="alert alert-success" id="alert">{{ Session::get('message') }}</div>
+
+<script>
+// Hide the alert message after 2 seconds
+setTimeout(function() {
+    document.getElementById('alert').style.display = 'none';
+}, 1000);
+</script>
+@endif
+
 <table class="table">
     <thead>
         <tr>

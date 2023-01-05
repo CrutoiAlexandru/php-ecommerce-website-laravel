@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -36,6 +37,8 @@ class CartController extends Controller
         $cart->product_id = $request->product_id;
         $cart->save();
 
+        Session::flash('message', 'Item added to cart');
+
         return back();
     }
 
@@ -43,6 +46,8 @@ class CartController extends Controller
     {
         Cart::where('id', $request->delete_id)->delete();
         Log::alert($request->delete_id);
+
+        Session::flash('message', 'Item deleted from cart');
 
         return view('cart');
     }

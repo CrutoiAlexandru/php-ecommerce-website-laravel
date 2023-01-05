@@ -11,7 +11,21 @@
 </head>
 
 @section('content')
+
+@if(Session::has('message'))
+<!-- In your view -->
+<div class="alert alert-danger" id="alert">{{ Session::get('message') }}</div>
+
+<script>
+// Hide the alert message after 2 seconds
+setTimeout(function() {
+    document.getElementById('alert').style.display = 'none';
+}, 1000);
+</script>
+@endif
+
 <h1 class="display-8 text-center">Here are your orders</h1>
+<hr class="my-3 bg-dark">
 <table class="table">
     <thead>
         <tr>
@@ -63,6 +77,7 @@
 </table>
 
 <h1 class="display-6 text-center">Where should we send them?</h1>
+<hr class="my-3 bg-dark">
 
 <div class="d-flex justify-content-center">
     <form method="post" action="/order" class="mb-3" style="width: 50%">
