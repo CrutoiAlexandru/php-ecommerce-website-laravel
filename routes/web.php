@@ -27,6 +27,8 @@ Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name
 
 Route::post('/cart', 'App\Http\Controllers\CartController@store');
 
+Route::post('/cart/delete', 'App\Http\Controllers\CartController@delete');
+
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
 Route::get('/home/beanies', [App\Http\Controllers\ProductsController::class, 'beanies'])->name('beanies');
@@ -34,3 +36,5 @@ Route::get('/home/beanies', [App\Http\Controllers\ProductsController::class, 'be
 Route::get('/home/hoodies', [App\Http\Controllers\ProductsController::class, 'hoodies'])->name('hoodies');
 
 Route::get('/home/socks', [App\Http\Controllers\ProductsController::class, 'socks'])->name('socks');
+
+Route::post('/order', 'App\Http\Controllers\OrderController@store');

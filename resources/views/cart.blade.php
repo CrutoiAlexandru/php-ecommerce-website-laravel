@@ -7,11 +7,11 @@
     <title>Home</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href='https://css.gg/shopping-cart.css' rel='stylesheet'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 </head>
 
 @section('content')
 <h1 class="display-8 text-center">Here are your orders</h1>
-
 <table class="table">
     <thead>
         <tr>
@@ -19,6 +19,7 @@
             <th scope="col">Image</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
+            <td></td>
         </tr>
     </thead>
     <?php
@@ -26,18 +27,29 @@
         
         $carts = Cart::where('user_id', Auth::user()->id)->get();
         $total = 0;
+        $all_products = '';
     ?>
     <tbody>
         @foreach ($carts as $cart)
         <?php 
             $product = DB::select('SELECT * FROM products WHERE id = ' . $cart->product_id . ';')[0];
             $total += $product->price;
+            $all_products .= $product->name . ', ';
         ?>
         <tr style="width: 100%;">
             <td>{{ $product->name }}</td>
             <td><img src="{{ $product->image }}" alt="{{ $product->name }}" style="width: 50px;"></td>
             <td>{{ $product->description }}</td>
             <td>${{ $product->price }}</td>
+            <td>
+                <form method="post" action="/cart/delete">
+                    @csrf
+                    <input hidden name="delete_id" value="<?php echo $cart->id ?>">
+                    <button type="submit" class="btn btn-sm bg-dark">
+                        <i class='fa fa-trash text-light'></i>
+                    </button>
+                </form>
+            </td>
         </tr>
         @endforeach
         <tr style="width: 100%;" class="bg-dark">
@@ -45,6 +57,7 @@
             <td></td>
             <td class="text-light"><b>Total</b></td>
             <td class="text-light">${{ $total }}</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -53,6 +66,10 @@
 
 <div class="d-flex justify-content-center">
     <form method="post" action="/order" class="mb-3" style="width: 50%">
+        @csrf
+        <input type="hidden" name="price" value="<?php echo $total ?>">
+        <input type="hidden" name="product" value="<?php echo $all_products ?>">
+
         <div class="form-group">
             <label for="country">Country</label>
             <input type="text" name="country" class="form-control" required>

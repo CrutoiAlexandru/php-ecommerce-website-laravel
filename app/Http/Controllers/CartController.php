@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
@@ -36,5 +37,13 @@ class CartController extends Controller
         $cart->save();
 
         return back();
+    }
+
+    public function delete(Request $request)
+    {
+        Cart::where('id', $request->delete_id)->delete();
+        Log::alert($request->delete_id);
+
+        return view('cart');
     }
 }
