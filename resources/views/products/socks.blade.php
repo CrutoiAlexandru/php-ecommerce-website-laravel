@@ -28,7 +28,7 @@
             <td>{{ $product->name }}</td>
             <td><img src="{{ $product->image }}" alt="{{ $product->name }}" style="width: 50px;"></td>
             <td>{{ $product->description }}</td>
-            <td>{{ $product->price }}</td>
+            <td>${{ $product->price }}</td>
             <td>
                 <form action="/cart" method="post">
                     @csrf
