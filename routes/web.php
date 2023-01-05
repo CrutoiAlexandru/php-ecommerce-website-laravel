@@ -25,6 +25,8 @@ Route::get('/aboutus', [App\Http\Controllers\AboutusController::class, 'index'])
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 
+Route::post('/cart', 'App\Http\Controllers\CartController@store');
+
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
 Route::get('/home/beanies', [App\Http\Controllers\ProductsController::class, 'beanies'])->name('beanies');

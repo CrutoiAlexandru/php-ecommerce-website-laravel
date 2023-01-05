@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
+use App\Models\Cart;
 
 class CartController extends Controller
 {
@@ -24,5 +26,15 @@ class CartController extends Controller
     public function index()
     {
         return view('cart');
+    }
+
+    public function store(Request $request)
+    {
+        $cart = new Cart;
+        $cart->user_id = Auth::user()->id;
+        $cart->product_id = $request->product_id;
+        $cart->save();
+
+        return redirect('/cart');
     }
 }
