@@ -35,6 +35,6 @@ class CartController extends Controller
         $cart->product_id = $request->product_id;
         $cart->save();
 
-        return redirect('/cart');
+        return back();
     }
 }
