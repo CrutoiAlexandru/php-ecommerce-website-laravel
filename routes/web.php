@@ -22,3 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/aboutus', [App\Http\Controllers\AboutusController::class, 'index'])->name('aboutus');
+
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
+
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
