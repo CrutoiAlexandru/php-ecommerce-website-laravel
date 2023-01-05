@@ -26,3 +26,9 @@ Route::get('/aboutus', [App\Http\Controllers\AboutusController::class, 'index'])
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+
+Route::get('/home/beanies', [App\Http\Controllers\ProductsController::class, 'beanies'])->name('beanies');
+
+Route::get('/home/hoodies', [App\Http\Controllers\ProductsController::class, 'hoodies'])->name('hoodies');
+
+Route::get('/home/socks', [App\Http\Controllers\ProductsController::class, 'socks'])->name('socks');
